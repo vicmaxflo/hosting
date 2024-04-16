@@ -22,7 +22,7 @@
 			center: [1.620, -75.604],
 			zoom: 13,
 			layers: osm,
-			scrollWheelZoom: false
+			scrollWheelZoom: true
 		});
 		
 		const marker1 = L.marker([1.620, -75.604]).addTo(map)
@@ -38,7 +38,7 @@
 			radius: 500
 		}).addTo(map);
 		
-		const marker3 = L.marker([1.614, -75.613]).addTo(map)
+		const marker3 = L.marker([1.614945, -75.613221]).addTo(map)
 			.bindPopup('Plaza Santander.').openPopup();
 		
 		const polygon = L.polygon([
