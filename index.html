@@ -1,0 +1,73 @@
+<html>
+<meta charset="utf-8" />
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	<style>
+		#map {
+			width: 100%;
+			height: 600px;
+			box-shadow: 5px 5px 5px #888;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+		const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>' + 'contributors',maxZoom: 18
+		});
+		
+		const map = L.map('map', {
+			center: [1.620, -75.604],
+			zoom: 13,
+			layers: osm,
+			scrollWheelZoom: false
+		});
+		
+		const marker1 = L.marker([1.620, -75.604]).addTo(map)
+			.bindPopup('<b>Universidad</b><br />de la Amazonia.').openPopup();
+		
+		const marker2 = L.marker([1.61501, -75.613881]).addTo(map)
+			.bindPopup('<b>Alcaldía de</b><br />Florencia.').openPopup();
+		
+		const circle = L.circle([1.61501, -75.613881], {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.5,
+			radius: 500
+		}).addTo(map);
+		
+		const marker3 = L.marker([1.614, -75.613]).addTo(map)
+			.bindPopup('Plaza Santander.').openPopup();
+		
+		const polygon = L.polygon([
+			[1.615136, -75.613629],
+			[1.615318, -75.613009],
+			[1.61472, -75.612835],
+			[1.614543, -75.613444]
+		]).addTo(map);
+		
+		const marker4 = L.marker([1.622066, -75.602092]).addTo(map)
+			.bindPopup('Casa Victor.').openPopup();
+		
+		var pointA = new L.LatLng(1.622037, -75.602004); 
+		var pointB = new L.LatLng(1.621978, -75.602068);
+		var pointC = new L.LatLng(1.622064, -75.602406);
+		var pointD = new L.LatLng(1.621731, -75.60297);
+		var pointE = new L.LatLng(1.621651, -75.603426);
+		var pointF = new L.LatLng(1.621587, -75.604032);
+		var pointG = new L.LatLng(1.621908, -75.604321);
+		var pointH = new L.LatLng(1.62186, -75.604402);
+		
+		var latlngs = [pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH];
+		var polyline = L.polyline(
+		latlngs, {color: 'red'}
+		)
+		.addTo(map)
+		.bindPopup ('Recorrido Casa Victor - Universidad.');
+
+		L.control.scale().addTo(map);
+	</script>
+</body>
+</html>
